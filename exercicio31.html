@@ -1,0 +1,44 @@
+<script>
+    function calcularMedia(nota1, nota2){
+        return (nota1 + nota2) / 2;
+    }
+
+    function exibirResultado(media){
+        return media >= 6.5 ? "APROVADO" : "REPROVADO";
+    }
+
+    function verificarErro(valor){
+        if(Number.isNaN(valor)){
+            alert("A nota digitada não é um número. Por favor, digite novamente.");
+        }
+        return !Number.isNaN(valor);
+    }
+
+    var alunos = [];
+    var continuar = true;
+
+    while (continuar) {
+        var nome = prompt("Digite o nome do aluno");
+
+        var nota1, nota2;
+        do {
+            nota1 = parseFloat(prompt("Digite a primeira nota"));
+        } while (!verificarErro(nota1));
+
+        do {
+            nota2 = parseFloat(prompt("Digite a segunda nota"));
+        } while (!verificarErro(nota2));
+
+        var media = calcularMedia(nota1, nota2);
+        var resultado = exibirResultado(media);
+
+        alunos.push({ nome: nome, media: media.toFixed(2), resultado: resultado });
+
+        continuar = confirm("Deseja adicionar outro aluno?");
+    }
+
+    document.write("<h2>Resultados dos Alunos</h2>");
+    alunos.forEach(function(aluno) {
+        document.write(`Aluno: ${aluno.nome}<br> Média: ${aluno.media}<br> Resultado: ${aluno.resultado}<br><br>`);
+    });
+</script>

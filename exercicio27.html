@@ -1,0 +1,24 @@
+
+
+    
+
+    <script>
+        function calcularMedia() {
+            // Obtém os valores dos campos de entrada
+            const nome = document.getElementById('nome').value;
+            const nota1 = parseFloat(document.getElementById('nota1').value);
+            const nota2 = parseFloat(document.getElementById('nota2').value);
+
+            // Calcula a média
+            const media = (nota1 + nota2) / 2;
+
+            // Determina se o aluno foi aprovado ou reprovado
+            const resultado = media > 6.5 ? "aprovado" : "reprovado";
+
+            // Exibe o resultado
+            const mensagem = `O aluno ${nome} teve média ${media.toFixed(2)} e foi ${resultado}.`;
+            document.getElementById('resultado').textContent = mensagem;
+        }
+    </script>
+</body>
+</html>
